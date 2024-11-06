@@ -12,6 +12,16 @@ interface ButtonData {
   action: () => void;
 }
 
+export function Header() {
+  return (
+    <header className="w-full h-[40px] fixed top-0 left-0 border-b border-b-white/20 bg-gray-900 pl-[60px]">
+      <nav className="px-3 flex items-center justify-center">
+        <button></button>
+      </nav>
+    </header>
+  );
+}
+
 export function SideBar() {
   const handleRunCode = () => {
     console.log("run code");
@@ -27,7 +37,6 @@ export function SideBar() {
       icon: <PlayIcon className="w-5 h-5 text-neutral-300" />,
       action: handleRunCode,
     },
-
     {
       name: "Pause",
       icon: <PauseIcon className="w-5 h-5 text-neutral-300" />,
@@ -36,8 +45,8 @@ export function SideBar() {
   ];
 
   return (
-    <aside className="fixed hidden md:block top-0 h-screen w-[60px] border-r border-r-white/20">
-      <div className="flex mx-auto flex-col gap-y-6 items-center justify-center my-6">
+    <aside className="fixed top-0 left-0 h-screen w-[60px] border-r border-r-white/20 backdrop-blur-md z-20">
+      <div className="flex flex-col gap-y-6 items-center justify-center my-6">
         {actionsButtons.map((actBtn) => (
           <TooltipProvider key={actBtn.name} delayDuration={300}>
             <Tooltip>
