@@ -12,16 +12,6 @@ interface ButtonData {
   action: () => void;
 }
 
-export function Header() {
-  return (
-    <header className="w-full h-[40px] fixed top-0 left-0 border-b border-b-white/20 bg-gray-900 pl-[60px]">
-      <nav className="px-3 flex items-center justify-center">
-        <button></button>
-      </nav>
-    </header>
-  );
-}
-
 export function SideBar() {
   const handleRunCode = () => {
     console.log("run code");
