@@ -1,10 +1,11 @@
 import { JavaScript, TypeScript } from "@/components/Icons/Icons";
-import { useState } from "react";
-
-type LanguageOptions = "JavaScript" | "TypeScript";
+import { LanguageOption, useCodeStore } from "@/hooks/useCode";
 
 export function Header() {
-  const [language, setLanguage] = useState<LanguageOptions>("JavaScript");
+  const setLanguage = useCodeStore((state) => state.setLanguage);
+  const language = useCodeStore((state) => state.language);
+
+  console.log(language);
 
   const languages = [
     {
@@ -43,7 +44,7 @@ export function Header() {
         {languages.map((lang) => (
           <button
             key={lang.tabName}
-            onClick={() => setLanguage(lang.tabName as LanguageOptions)}
+            onClick={() => setLanguage(lang.tabName as LanguageOption)}
             className={`${
               language === lang.tabName
                 ? "border-b-2 border-yellow-500"
