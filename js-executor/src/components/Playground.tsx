@@ -12,20 +12,22 @@ export default function Playground() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleEditorChange = (value: string) => {
-    if (value === code) return;
     setCode(value || "");
 
+    console.log(timerRef.current);
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
 
     timerRef.current = setTimeout(() => {
+      if (code === value) return;
       handleRun();
     }, 2000);
   };
 
   const handleRun = () => {
     const logs: string[] = [];
+    console.log(logs);
     const customConsole = {
       log: (message: string) => logs.push(String(message)),
       error: (message: string) => logs.push(`Error: ${message}`),
